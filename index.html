@@ -15,32 +15,8 @@
         --hover-glow: #a678ff;
       }
 
-      <script>const about=document.getElementById("aboutText");
-      const words=about.innerText.split(" ");
-
-      about.innerHTML=words.map(word=> `<span>$ {
-          word
+      
         }
-
-        </span>`).join(" ");
-
-      const spans=document.querySelectorAll("#aboutText span");
-
-      let index=0;
-
-      function glowWords() {
-        spans.forEach(span=> span.classList.remove("active"));
-
-        spans[index].classList.add("active");
-
-        index++;
-
-        if(index >=spans.length) {
-          index=0;
-        }
-      }
-
-      setInterval(glowWords, 150);
 
       </script>body {
         font-family: 'Inter', sans-serif;
@@ -161,51 +137,7 @@
         }
       }
 
-      .shimmer-title {
-        font-family: 'Orbitron', sans-serif;
-        font-size: 1.2em;
-        background: linear-gradient(90deg, #7c4dff, #c299ff, #7c4dff);
-        background-size: 200% auto;
-        color: transparent;
-        background-clip: text;
-        -webkit-background-clip: text;
-        animation: shimmerFlow 3s linear infinite;
-      }
-
-      @keyframes shimmerFlow {
-        0% {
-          background-position: 0% center;
-        }
-
-        100% {
-          background-position: 200% center;
-        }
-      }
-
-      .about-glow {
-        background: linear-gradient(90deg,
-            #ffffff 0%,
-            #ffffff 40%,
-            #c299ff 50%,
-            #ffffff 60%,
-            #ffffff 100%);
-        background-size: 200% auto;
-        color: transparent;
-        background-clip: text;
-        -webkit-background-clip: text;
-        animation: aboutShimmer 6s linear infinite;
-      }
-
-      @keyframes aboutShimmer {
-        0% {
-          background-position: -200% center;
-        }
-
-        100% {
-          background-position: 200% center;
-        }
-      }
-
+     
       nav a {
         text-decoration: none;
         color: #c299ff;
@@ -340,8 +272,6 @@
 
     <section id="about">
       <h2>About Me</h2>
-
-      <p class="about-glow">
         Hello! I'm a creative storyteller and digital designer who enjoys combining film, design, and marketing strategy.
         I study at the University of Waterloo where I began in Global Business and Digital Arts and am continuing my studies in Arts and Business.
         My work focuses on visual storytelling, user experience design, and creative content that connects with audiences.
