@@ -15,7 +15,34 @@
         --hover-glow: #a678ff;
       }
 
-      body {
+      <script>const about=document.getElementById("aboutText");
+      const words=about.innerText.split(" ");
+
+      about.innerHTML=words.map(word=> `<span>$ {
+          word
+        }
+
+        </span>`).join(" ");
+
+      const spans=document.querySelectorAll("#aboutText span");
+
+      let index=0;
+
+      function glowWords() {
+        spans.forEach(span=> span.classList.remove("active"));
+
+        spans[index].classList.add("active");
+
+        index++;
+
+        if(index >=spans.length) {
+          index=0;
+        }
+      }
+
+      setInterval(glowWords, 150);
+
+      </script>body {
         font-family: 'Inter', sans-serif;
         margin: 0;
         background-color: var(--bg-dark);
@@ -115,17 +142,68 @@
         }
       }
 
+      .neon-gradient-text {
+        background: linear-gradient(90deg, #7c4dff, #c299ff, #7c4dff);
+        background-size: 200% auto;
+        color: transparent;
+        background-clip: text;
+        -webkit-background-clip: text;
+        animation: neonFlow 3s linear infinite;
+      }
 
-      nav {
+      @keyframes neonFlow {
+        0% {
+          background-position: 0% center;
+        }
+
+        100% {
+          background-position: 200% center;
+        }
+      }
+
+      .shimmer-title {
         font-family: 'Orbitron', sans-serif;
-        display: flex;
-        justify-content: center;
-        gap: 30px;
-        margin: 0;
-        background-color: #2c2c2c;
-        padding: 12px 0;
-        border-top: 2px solid #5e3d99;
-        border-bottom: 2px solid #5e3d99;
+        font-size: 1.2em;
+        background: linear-gradient(90deg, #7c4dff, #c299ff, #7c4dff);
+        background-size: 200% auto;
+        color: transparent;
+        background-clip: text;
+        -webkit-background-clip: text;
+        animation: shimmerFlow 3s linear infinite;
+      }
+
+      @keyframes shimmerFlow {
+        0% {
+          background-position: 0% center;
+        }
+
+        100% {
+          background-position: 200% center;
+        }
+      }
+
+      .about-glow {
+        background: linear-gradient(90deg,
+            #ffffff 0%,
+            #ffffff 40%,
+            #c299ff 50%,
+            #ffffff 60%,
+            #ffffff 100%);
+        background-size: 200% auto;
+        color: transparent;
+        background-clip: text;
+        -webkit-background-clip: text;
+        animation: aboutShimmer 6s linear infinite;
+      }
+
+      @keyframes aboutShimmer {
+        0% {
+          background-position: -200% center;
+        }
+
+        100% {
+          background-position: 200% center;
+        }
       }
 
       nav a {
@@ -170,13 +248,14 @@
       }
 
       .skill-card {
-        background: linear-gradient(135deg, #3e1f71, #7c4dff);
-        border: 2px solid var(--accent);
+        background: linear-gradient(135deg, #1a1a1a, #3a3a3a);
+        border: 2px solid #c0c0c0;
         border-radius: 16px;
         padding: 20px;
         transition: transform 0.3s ease, box-shadow 0.3s ease;
-        box-shadow: 0 0 10px #00000050;
+        box-shadow: 0 0 20px #c0c0c0;
         text-align: center;
+        color: #e6e6e6;
       }
 
       .skill-card:hover {
@@ -261,13 +340,23 @@
 
     <section id="about">
       <h2>About Me</h2>
-      <p>Hello! I'm a digital designer passionate about visual storytelling. I also love creating films. I'm currently studying at the University of Waterloo in Global Business and Digital Arts - A perfect blend of business, marketing, user experience, cinematography, and graphic design. I love working with unique ideas and turning them into clean, intuitive designs. Just like I made my website!</p>
+
+      <p class="about-glow">
+        Hello! I'm a creative storyteller and digital designer who enjoys combining film, design, and marketing strategy.
+        I study at the University of Waterloo where I began in Global Business and Digital Arts and am continuing my studies in Arts and Business.
+        My work focuses on visual storytelling, user experience design, and creative content that connects with audiences.
+        I create short films, design digital interfaces, and develop visual content that blends creativity with clear communication.
+        Alongside creative work, I also have experience working with data analytics, translating complex datasets into insights that support marketing and product decisions.
+        Through my work with the UW Film Society and academic projects, I enjoy collaborating with teams, building engaging experiences, and bringing ideas to life through both design and film.
+      </p>
+
     </section>
 
     <section id="skills">
       <h2>Skills</h2>
       <div class="skills-grid">
-        <div class="skill-card">
+        <div class="skill-card" style="background: linear-gradient(135deg, #2b0d0d, #4a1212); color: #ffb8b8; border: 2px solid #ff4d4d; box-shadow: 0 0 20px #ff4d4d;">
+
           <div class="skill-icons">
             <img src="https://upload.wikimedia.org/wikipedia/commons/a/af/Adobe_Photoshop_CC_icon.svg" alt="Photoshop">
             <img src="https://upload.wikimedia.org/wikipedia/commons/f/fb/Adobe_Illustrator_CC_icon.svg" alt="Illustrator">
@@ -275,64 +364,135 @@
             <img src="https://upload.wikimedia.org/wikipedia/commons/c/cb/Adobe_After_Effects_CC_icon.svg" alt="After Effects">
             <img src="https://upload.wikimedia.org/wikipedia/commons/4/48/Adobe_InDesign_CC_icon.svg" alt="InDesign">
           </div>
+
           <h3>Adobe Creative Suite</h3>
-          <p>Fluent in Photoshop, Illustrator, Premiere Pro, After Effects, and InDesign — using them to craft brand identities, edit narrative films, design high-impact graphics, layout polished presentations and documents</p>
+
+          <p>Fluent in Photoshop, Illustrator, Premiere Pro, After Effects, and InDesign, using them to craft brand identities, edit narrative films, design high impact graphics, and create polished visual presentations.</p>
+
+        </div>
+        <div class="skill-card" style="background: linear-gradient(135deg, #2b1600, #4a2a00); color: #ffd8a8; border: 2px solid #ff9a3c; box-shadow: 0 0 20px #ff9a3c;">
+
+          <img src="https://upload.wikimedia.org/wikipedia/commons/3/33/Figma-logo.svg" alt="Figma" style="width: 40px; height: 40px; margin-bottom: 10px;">
+
+          <h3>Figma</h3>
+
+          <p>Experienced with Figma for wireframing, prototyping, and collaborative design, used in student UX projects and group interfaces to plan and present user friendly layouts.</p>
+
+        </div>
+
+        <div class="skill-card" style="background: linear-gradient(135deg, #0d1a2b, #123456); color: #b8dcff; border: 2px solid #4db8ff; box-shadow: 0 0 20px #4db8ff;">
+          <h3>Camera & Lighting Equipment</h3>
+          <p>Confident with DSLR and mirrorless camera setups, tripods, rigs, lighting kits, and field gear - used across short films and campus projects to achieve clean framing, stable shots, and mood lighting.</p>
+        </div>
+        <div class="skill-card" style="background: linear-gradient(135deg, #2b2300, #4d3d00); color: #ffe89c; border: 2px solid #ffd84d; box-shadow: 0 0 20px #ffd84d;">
+          <div class="skill-icons">
+            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg">
+            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg">
+            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/pandas/pandas-original.svg">
+          </div>
+          <h3>Data Analytics & Visualization</h3>
+          <p>Experienced in analyzing datasets to identify patterns in consumer behavior and product performance. Used SQL, Python, Tableau, Power BI, and Excel to evaluate data and translate complex findings into clear insights that support marketing and product decisions.</p>
+        </div>
+        <div class="skill-card" style="background: linear-gradient(135deg, #0a1f14, #123c2a); color: #b8ffd8; border: 2px solid #4dff9c; box-shadow: 0 0 20px #4dff9c;">
+
+          <div class="skill-icons">
+            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg" alt="HTML">
+            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg" alt="CSS">
+            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg" alt="GitHub">
+            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" alt="JavaScript">
+            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nextjs/nextjs-original.svg" alt="Next.js">
+          </div>
+
+          <h3>Web Design</h3>
+
+          <p>Comfortable building and editing static websites using HTML, CSS, and JavaScript. I develop and maintain my portfolio using GitHub Pages and NetNet, creating responsive layouts and clean visual interfaces that showcase creative and technical work.</p>
+
+        </div>
+        <div class="skill-card" style="background: linear-gradient(135deg, #2b0d1f, #4a1235); color: #ffc2e2; border: 2px solid #ff5cb8; box-shadow: 0 0 20px #ff5cb8;">
+
+          <div class="skill-icons">
+            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/google/google-original.svg" alt="Google Workspace">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/e/e7/Instagram_logo_2016.svg" alt="Instagram">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/5/51/Facebook_f_logo_%282019%29.svg" alt="Meta">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/9/96/Mailchimp_Logo.png" alt="Mailchimp">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/3/33/Figma-logo.svg" alt="Figma">
+          </div>
+
+          <h3>Marketing & Content Strategy</h3>
+
+          <p>Experienced in developing promotional campaigns, social media marketing, and community outreach initiatives. Through my role with the UW Film Society I design digital content, promote events, and collaborate with local venues to grow audience engagement and expand membership.</p>
+
         </div>
         <div class="skill-card">
           <img src="DaVinci_Resolve_Studio.png" alt="DaVinci" style="width: 40px; height: 40px; margin-bottom: px;">
           <h3>DaVinci Resolve</h3>
-          <p>Comfortable with editing, color grading, and visual polishing in DaVinci Resolve — used for student films and creative projects to build cinematic storytelling skills</p>
-        </div>
-        <div class="skill-card">
-          <img src="capcut.png" alt="CapCut" style="width: 40px; height: 40px; margin-bottom: 0px;">
-          <h3>CapCut</h3>
-          <p>Experienced with CapCut for mobile-first editing — creating Instagram Reels and TikToks with smooth transitions, audio syncing, filters, and engaging short-form storytelling</p>
-        </div>
-        <div class="skill-card">
-          <img src="https://upload.wikimedia.org/wikipedia/commons/3/33/Figma-logo.svg" alt="Figma" style="width: 40px; height: 40px;">
-          <h3>Figma</h3>
-          <p>Experienced with Figma for wireframing, prototyping, and collaborative design — used in student UX projects and group interfaces to plan and present user-friendly layouts</p>
+          <p>Comfortable with editing, color grading, and visual polishing in DaVinci Resolve - used for student films and creative projects to build cinematic storytelling skills</p>
         </div>
         <div class="skill-card">
           <img src="canva2.webp" alt="Canva" style="width: 40px; height: 40px;">
           <h3>Canva</h3>
-          <p>Skilled in using Canva to design social posts, event flyers, and pitch decks — great for creating polished, on-brand visuals quickly for class, clubs, or content sharing</p>
+          <p>Skilled in using Canva to design social posts, event flyers, and pitch decks - great for creating polished, on-brand visuals quickly for class, clubs, or content sharing</p>
         </div>
-        <div class="skill-card" style="background: linear-gradient(135deg, #0d1a2b, #123456); color: #b8dcff; border: 2px solid #4db8ff; box-shadow: 0 0 20px #4db8ff;">
-          <h3>Camera & Lighting Equipment</h3>
-          <p>Confident with DSLR and mirrorless camera setups, tripods, rigs, lighting kits, and field gear — used across short films and campus projects to achieve clean framing, stable shots, and mood lighting.</p>
+        <div class="skill-card">
+          <img src="capcut.png" alt="CapCut" style="width: 40px; height: 40px; margin-bottom: 0px;">
+          <h3>CapCut</h3>
+          <p>Experienced with CapCut for mobile-first editing - creating Instagram Reels and TikToks with smooth transitions, audio syncing, filters, and engaging short-form storytelling</p>
         </div>
       </div>
     </section>
 
     <section id="experience">
       <h2>Experience</h2>
+      <h3 class="shimmer-title">Product Data Analyst – Ontario Nutri Lab</h3>
+      <p><em>September 2025 – December 2025</em></p>
+      <p>I worked as part of a team analyzing feline dietary preference and health outcome data using tools such as SQL, Python, Tableau, Excel, and Power BI. My work focused on identifying patterns in consumption rates, repeat selections, and behavioral responses to understand which ingredient formulations cats preferred and tolerated best. I communicated analytical findings to partner brands including Royal Canin, Hill’s Pet Nutrition, and Purina Canada, translating complex datasets into clear insights for marketing and product strategy teams. These reports helped stakeholders evaluate ingredient effectiveness, forecast market demand, and inform retail placement decisions at major chains such as Petco and Walmart.</p>
+
+      <h3 class="shimmer-title">Public Relations & Marketing Coordinator – UW Film Society</h3>
+      <p><em>January 2024 – Present</em></p>
+      <p>I help lead promotional campaigns that grow the club’s membership through social media outreach, campus events, and digital marketing strategies. I design posters, social media graphics, and digital promotional content using tools such as Canva and Figma to increase the visibility of events and screenings. I also help coordinate partnerships with local businesses and venues including Princess Cinemas to host short film screenings and competitions that attract student audiences. In addition, I collaborate with other campus organizations to expand outreach and co-host events that strengthen community engagement and participation.</p>
+
+
       <h3>Procor – Human Resources Assistant</h3>
       <p><em>February 2022 – July 2022</em></p>
-      <p>I actively contribute to recruitment and onboarding processes by creating job ads and scheduling interviews. Responsible for maintaining employee records and updating HR databases, I ensure accurate and organized information. Additionally, I support HR projects and initiatives, including employee engagement activities, to foster a positive workplace environment.</p>
+      <p>I actively contributed to recruitment and onboarding processes by creating job ads and scheduling interviews. Responsible for maintaining employee records and updating HR databases, I ensured accurate and organized information. Additionally, I supported HR projects and initiatives, including employee engagement activities, to foster a positive workplace environment.</p>
 
       <h3>Vector Marketing – Sales Associate</h3>
       <p><em>June 2022 – September 2022</em></p>
-      <p>I am skilled in generating leads and scheduling appointments through diverse marketing channels, engaging potential clients interested in kitchen cutlery. Through informative Zoom calls, I showcase our high-quality cutlery products, understanding clients' needs to offer personalized recommendations. Building and maintaining strong client relationships, I address inquiries promptly. Keeping abreast of product knowledge and industry trends, I effectively communicate our cutlery's value proposition. Additionally, I provide accurate and timely reports on sales activities, client feedback, and market insights.</p>
+      <p>I generated leads and scheduled 35 appointments through cold-calling and company leads , engaging potential clients interested in kitchen cutlery. Through informative Zoom calls, I showcased our high-quality cutlery products, understanding clients' needs to offer personalized recommendations. I built and maintainied strong client relationships, addressing their inquiries promptly. Kept strong product knowledge and latest news on industry trends, I effectively communicated our cutlery's value proposition. Additionally, I provided accurate and timely reports on sales activities, client feedback, and market insights.</p>
     </section>
 
     <section id="education">
       <h2>Education</h2>
       <h3>University of Waterloo</h3>
-      <p><em>Global Business and Digital Arts</em> – 2028</p>
-    </section>
 
-    <section id="contact">
-      <h2>Contact</h2>
-      <p>Let's grab coffee sometime! You can reach me at <a href="mailto:a28tripa@uwaterloo.ca">a28tripa@uwaterloo.ca</a>.</p>
-      <div class="button-container">
-        <a class="button-link" href="https://www.linkedin.com/in/andy-tripathy-59770b2a1/" target="_blank">View LinkedIn</a>
-        <a class="button-link" href="Tripathy_Andy_Resume2025.pdf" target="_blank">View My Resume</a>
-      </div>
-    </section>
+      <p style="display:flex; justify-content:space-between; max-width:600px;">
+        <span class="neon-gradient-text"><em>Global Business and Digital Arts</em></span>
+        <span class="neon-gradient-text">2023 – 2025</span>
+      </p>
 
-    <footer>
-      <p>Last updated: April 2025</p>
-    </footer>
+      <p style="display:flex; justify-content:space-between; max-width:600px;">
+        <span class="neon-gradient-text"><em>Arts and Business</em></span>
+        <span class="neon-gradient-text">2026 – 2028</span>
+      </p>
+
+      <section id="contact">
+        <h2 class="neon-gradient-text">Contact</h2>
+
+        <p class="neon-gradient-text">
+          Let's grab coffee sometime! You can reach me at
+          <a href="mailto:a28tripa@uwaterloo.ca" style="color: inherit; text-decoration: underline;">
+            a28tripa@uwaterloo.ca
+          </a>.
+        </p>
+
+        <div class="button-container">
+          <a class="button-link" href="https://www.linkedin.com/in/andy-tripathy-59770b2a1/" target="_blank">View LinkedIn</a>
+          <a class="button-link" href="_AndyTripathy_ResumeDRAFT26 (1).pdf" target="_blank">View My Resume</a>
+        </div>
+      </section>
+
+      <footer>
+        <p>Last updated: March 2026</p>
+      </footer>
   </body>
 </html>
